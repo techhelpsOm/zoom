@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "test",
+  "version": "1.0",
+  "background": {
+    "scripts": ["background.js","worker.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "http://localhost/*",
+    "tabs",
+    "storage",
+    "downloads",
+    "activeTab",
+    "https://app.scre.io/*",
+    "https://*.zoom.us/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.zoom.us/*","https://app.scre.io/*"],
+      "js": ["contentScript.js","recordScript.js"]
+    }
+  ],
+  "commands": {
+    "start": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Start Capture"
+    },
+    "stop": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "MacCtrl+Shift+X"
+      },
+      "description": "Stop Capture"
+    }
+  }
+}
